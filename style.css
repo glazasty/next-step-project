@@ -47,19 +47,28 @@ body {
     box-sizing: border-box;
 }
 
-/* 4. СТРОЧНАЯ ПАНЕЛЬ УПРАВЛЕНИЯ */
+/* СТРОЧНАЯ ПАНЕЛЬ УПРАВЛЕНИЯ С ЗАПРЕТОМ ПЕРЕНОСА */
 .control-panel {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: clamp(16px, 3vw, 24px); 
-    font-size: clamp(17px, 2.2vw, 21px); /* Шрифт меню плавно растет от 17px до 21px */
+    font-size: clamp(17px, 2.2vw, 21px); 
     color: var(--text-muted);
     margin-bottom: clamp(50px, 8vw, 90px); 
+    overflow-x: auto; /* Включает аккуратную прокрутку, если экран экстремально узкий */
+    white-space: nowrap; /* Запрещает элементам меню падать на вторую строку */
+    width: 100%;
+    -webkit-overflow-scrolling: touch; /* Плавный скролл на смартфонах */
+}
+
+/* Скрываем некрасивую полосу прокрутки в меню, чтобы сохранить книжный стиль */
+.control-panel::-webkit-scrollbar {
+    display: none;
 }
 
 .control-divider {
     color: var(--border-color);
+    flex-shrink: 0;
 }
 
 .inline-btn {
@@ -67,16 +76,15 @@ body {
     border: none;
     color: var(--text-muted);
     font-family: 'Lora', serif !important;
-    font-size: inherit; /* Наследует размер от панели управления */
+    font-size: inherit; 
     cursor: pointer;
     padding: 3px 0;
     border-bottom: 2px solid transparent;
     transition: all 0.2s ease;
+    flex-shrink: 0; /* Запрещает кнопкам сжиматься и деформировать буквы */
+    white-space: nowrap; /* Гарантирует монолитность каждого слова */
 }
 
-.inline-btn:hover {
-    color: var(--text-main);
-}
 
 .inline-btn.active {
     color: var(--text-main);
