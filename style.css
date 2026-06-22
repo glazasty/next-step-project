@@ -50,16 +50,24 @@ body {
     box-sizing: border-box;
 }
 
-/* ЧИСТАЯ ПАНЕЛЬ УПРАВЛЕНИЯ С ЕСТЕСТВЕННЫМ ПЕРЕНОСОМ */
+/* РОДИТЕЛЬСКАЯ ПАНЕЛЬ НАВИГАЦИИ */
 .control-panel {
     display: flex;
-    flex-wrap: wrap; /* Разрешает элементам мягко падать на вторую строчку, если экран узкий */
+    flex-wrap: wrap; /* Разрешает перенос неделимых блоков */
     align-items: center;
     gap: calc(var(--font-base) * 1.1); 
     font-size: calc(var(--font-base) * 0.93); 
     color: var(--text-muted);
     margin-bottom: calc(var(--font-base) * 4); 
     width: 100%;
+}
+
+/* НЕДЕЛИМЫЕ ГРУППЫ (Языки отдельно, Триада отдельно) */
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--font-base) * 1.1);
+    white-space: nowrap; /* Запрещает разрывать триаду или языки изнутри */
 }
 
 .control-divider {
@@ -76,7 +84,6 @@ body {
     padding: 3px 0;
     border-bottom: 2px solid transparent;
     transition: all 0.2s ease;
-    white-space: nowrap; /* Каждое отдельное слово («маршрут», «путь») остается цельным и не бьется по буквам */
 }
 
 .inline-btn:hover {
@@ -87,6 +94,16 @@ body {
     color: var(--text-main);
     font-weight: bold; 
     border-bottom: 2px solid var(--text-main); 
+}
+
+/* СКРЫТИЕ ДЕФИСА ПРИ ПЕРЕНОСЕ НА СМАРТФОНАХ */
+@media (max-width: 600px) {
+    .control-divider {
+        display: none; /* Убираем дефис на мобильных, чтобы верстка была чистой */
+    }
+    .control-panel {
+        gap: calc(var(--font-base) * 0.6) calc(var(--font-base) * 1.1); /* Оптимизируем отступы между строками на мобильном */
+    }
 }
 
 /* 5. ЖЕСТКАЯ НИСХОДЯЩАЯ ИЕРАРХИЯ НА КОЭФФИЦИЕНТАХ */
