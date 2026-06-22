@@ -2,7 +2,6 @@ function switchLevel(levelCode) {
     document.body.classList.remove('show-H', 'show-M', 'show-P');
     document.body.classList.add('show-' + levelCode);
     
-    // Сбрасываем активность только с кнопок уровня подачи
     const levelButtons = document.querySelectorAll('[data-level]');
     for (let i = 0; i < levelButtons.length; i++) {
         levelButtons[i].classList.remove('active');
@@ -21,7 +20,6 @@ function switchLang(langCode) {
     document.getElementById('lang-en').classList.remove('active');
     document.getElementById('lang-' + langCode).classList.add('active');
     
-    const labelLang = document.getElementById('label-lang');
     const subtitle = document.getElementById('site-subtitle');
     const btnH = document.getElementById('btn-H');
     const btnM = document.getElementById('btn-M');
@@ -30,15 +28,13 @@ function switchLang(langCode) {
     const titleR = document.getElementById('title-R');
     
     if (langCode === 'en') {
-        labelLang.innerText = "lang:";
-        subtitle.innerText = "— the religion of conscious creation";
+        subtitle.innerText = "— religion of conscious creation";
         btnH.innerText = "direction";
         btnM.innerText = "route";
         btnP.innerText = "path";
         titleB.innerText = "basis";
         titleR.innerText = "relief";
     } else {
-        labelLang.innerText = "язык:";
         subtitle.innerText = "— религия осознанного созидания";
         btnH.innerText = "направление";
         btnM.innerText = "маршрут";
