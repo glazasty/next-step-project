@@ -28,14 +28,14 @@ function switchLang(langCode) {
     const titleR = document.getElementById('title-R');
     
     if (langCode === 'en') {
-        subtitle.innerText = "— religion of conscious creation";
+        subtitle.innerText = "religion of conscious creation";
         btnH.innerText = "direction";
         btnM.innerText = "route";
         btnP.innerText = "path";
         titleB.innerText = "basis";
         titleR.innerText = "relief";
     } else {
-        subtitle.innerText = "— религия осознанного созидания";
+        subtitle.innerText = "религия осознанного созидания";
         btnH.innerText = "направление";
         btnM.innerText = "маршрут";
         btnP.innerText = "путь";
