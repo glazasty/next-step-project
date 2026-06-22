@@ -1,181 +1,47 @@
-@font-face {
-    font-family: 'Lora';
-    src: url('fonts/lora.woff2') format('woff2'),
-         url('fonts/lora.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-:root {
-    --bg-color: #ffffff;       /* Чистый белый фон */
-    --text-main: #111827;      /* Глубокий графитовый (почти черный) текст */
-    --text-muted: #6b7280;     /* Серый для неактивных элементов */
-    --accent: #111827;         /* Черный для активных кнопок */
-    --border-color: #e5e7eb;   /* Светло-серые разделительные линии */
-}
-
-body {
-    font-family: 'Lora', serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    margin: 0;
-    padding: 0;
-    line-height: 1.7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-}
-
+/* Пересобранный контейнер с адаптивными полями */
 .container {
     max-width: 680px;
     width: 100%;
-    padding: 60px 20px;
+    /* На больших экранах увеличиваем верхний/нижний отступ до 100px, а боковые поля делаем 40px для ощущения воздуха */
+    padding: 100px 40px; 
     box-sizing: border-box;
     position: relative;
 }
 
-/* Переключатель языков сверху — теперь он не перекрывает другие кнопки */
-.lang-switch {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-bottom: 20px;
-    width: 100%;
+/* Изменения для мобильных экранов */
+@media (max-width: 600px) {
+    .container {
+        /* На смартфонах уменьшаем верхний отступ, чтобы текст не уезжал слишком низко, но сохраняем комфортные 24px по бокам */
+        padding: 50px 24px; 
+    }
+    
+    .main-title {
+        font-size: 32px; /* Чуть уменьшаем заголовок на мобильных, чтобы он не переносился криво */
+    }
 }
 
-.lang-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-family: 'Lora', serif;
-    font-size: 12px;
-    cursor: pointer;
-    padding: 2px 4px;
-    transition: color 0.2s ease;
-    letter-spacing: 0.05em;
-}
-
-.lang-btn.active {
-    color: var(--text-main);
-    font-weight: 700;
-    border-bottom: 1px solid var(--text-main);
-}
-
-/* Шапка и заголовки */
+/* Шапка и сжатый блок заголовков */
 .header {
     margin-bottom: 50px;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 30px;
+    padding-bottom: 35px;
 }
 
 .main-title {
-    font-size: 38px;
+    font-size: 42px;
     font-weight: 400;
     letter-spacing: -0.03em;
-    margin: 0 0 8px 0;
+    margin: 0; /* Полностью убираем внешние отступы */
     text-transform: uppercase;
+    line-height: 1.1;
 }
 
 .subtitle {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--text-muted);
-    margin: 0 0 30px 0;
+    /* Прижимаем к заголовку: ставим минимальный верхний отступ (6px) и убираем нижний */
+    margin: 6px 0 35px 0; 
     font-style: italic;
-}
-
-/* Переключатель уровней */
-.navigation-switch {
-    display: flex;
-    justify-content: space-between;
-    background: #f3f4f6;
-    padding: 4px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    max-width: 450px;
-    margin: 0 auto;
-}
-
-.nav-btn {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    padding: 10px 0;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 6px;
-    font-family: 'Lora', serif;
-    transition: all 0.2s ease;
-}
-
-.nav-btn:hover {
-    color: var(--text-main);
-}
-
-.nav-btn.active {
-    background: var(--accent);
-    color: var(--bg-color);
-}
-
-/* Текстовые секции */
-.manifesto-section {
-    margin-bottom: 60px;
-}
-
-.level-content {
-    display: none; 
-}
-
-.level-H {
-    font-size: 21px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--text-main);
-    border-left: 3px solid var(--accent);
-    padding-left: 24px;
-    font-style: italic;
-}
-
-.level-M {
-    font-size: 16px;
-}
-
-.level-M ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.level-M li {
-    position: relative;
-    padding-left: 24px;
-    margin-bottom: 14px;
-}
-
-.level-M li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--text-muted);
-}
-
-.level-P {
-    font-size: 16px;
-    text-align: justify;
-}
-
-.level-P p {
-    margin-top: 0;
-    margin-bottom: 16px;
-}
-
-/* Логика отображения */
-body.show-H .level-H,
-body.show-M .level-M,
-body.show-P .level-P {
-    display: block;
+    letter-spacing: 0.02em;
 }
