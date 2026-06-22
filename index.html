@@ -10,16 +10,24 @@
 
     <div class="container">
         
+              <!-- Очищенное строчное меню управления из двух неделимых блоков -->
         <div class="control-panel">
-            <button class="inline-btn active" id="lang-ru" onclick="switchLang('ru')">рус</button>
-            <button class="inline-btn" id="lang-en" onclick="switchLang('en')">eng</button>
+            <!-- Блок 1: Языковая пара -->
+            <div class="control-group">
+                <button class="inline-btn active" id="lang-ru" onclick="switchLang('ru')">рус</button>
+                <button class="inline-btn" id="lang-en" onclick="switchLang('en')">eng</button>
+            </div>
             
             <span class="control-divider">—</span>
             
-            <button class="inline-btn active" id="btn-H" data-level="H" onclick="switchLevel('H')">направление</button>
-            <button class="inline-btn" id="btn-M" data-level="M" onclick="switchLevel('M')">маршрут</button>
-            <button class="inline-btn" id="btn-P" data-level="P" onclick="switchLevel('P')">путь</button>
+            <!-- Блок 2: Неделимая триада подачи -->
+            <div class="control-group">
+                <button class="inline-btn active" id="btn-H" data-level="H" onclick="switchLevel('H')">направление</button>
+                <button class="inline-btn" id="btn-M" data-level="M" onclick="switchLevel('M')">маршрут</button>
+                <button class="inline-btn" id="btn-P" data-level="P" onclick="switchLevel('P')">путь</button>
+            </div>
         </div>
+
         
         <header class="header">
             <h1 class="main-title">Следующий шаг</h1>
