@@ -53,9 +53,10 @@ body {
 /* РОДИТЕЛЬСКАЯ ПАНЕЛЬ НАВИГАЦИИ */
 .control-panel {
     display: flex;
-    flex-wrap: wrap; /* Разрешает перенос неделимых блоков */
+    flex-wrap: wrap; 
     align-items: center;
-    gap: calc(var(--font-base) * 1.1); 
+    /* Увеличили общий зазор между языковой парой и триадой */
+    gap: calc(var(--font-base) * 1.5); 
     font-size: calc(var(--font-base) * 0.93); 
     color: var(--text-muted);
     margin-bottom: calc(var(--font-base) * 4); 
@@ -66,8 +67,9 @@ body {
 .control-group {
     display: flex;
     align-items: center;
-    gap: calc(var(--font-base) * 1.1);
-    white-space: nowrap; /* Запрещает разрывать триаду или языки изнутри */
+    /* Существенно увеличили пробелы между словами внутри триады и языков, чтобы они не сливались */
+    gap: calc(var(--font-base) * 1.4);
+    white-space: nowrap; 
 }
 
 .control-divider {
@@ -95,6 +97,18 @@ body {
     font-weight: bold; 
     border-bottom: 2px solid var(--text-main); 
 }
+
+/* СКРЫТИЕ ДЕФИСА ПРИ ПЕРЕНОСЕ НА СМАРТФОНАХ */
+@media (max-width: 600px) {
+    .control-divider {
+        display: none; 
+    }
+    .control-panel {
+        /* Оптимальный вертикальный отступ между строками и горизонтальный шаг на мобильном */
+        gap: calc(var(--font-base) * 0.8) calc(var(--font-base) * 1.5); 
+    }
+}
+
 
 /* СКРЫТИЕ ДЕФИСА ПРИ ПЕРЕНОСЕ НА СМАРТФОНАХ */
 @media (max-width: 600px) {
