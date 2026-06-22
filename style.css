@@ -1,4 +1,4 @@
-/* ПОДКЛЮЧЕНИЕ ОБЫЧНОГО ШРИФТА LORA */
+/* 1. ПОДКЛЮЧЕНИЕ ШРИФТА LORA С СЕРВЕРА GITHUB С УЧЕТОМ РЕГИСТРА БУКВ */
 @font-face {
     font-family: 'Lora';
     src: url('fonts/Lora-Regular.ttf') format('truetype');
@@ -7,7 +7,6 @@
     font-display: swap;
 }
 
-/* ПОДКЛЮЧЕНИЕ ЖИРНОГО ШРИФТА LORA */
 @font-face {
     font-family: 'Lora';
     src: url('fonts/Lora-Bold.ttf') format('truetype');
@@ -16,7 +15,7 @@
     font-display: swap;
 }
 
-
+/* 2. ГЛОБАЛЬНЫЕ НАСТРОЙКИ СВЕТЛОЙ ТЕМЫ */
 :root {
     --bg-color: #ffffff;       
     --text-main: #111827;      
@@ -25,7 +24,7 @@
 }
 
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Lora', serif !important; /* !important принудительно заставит браузер использовать Lora */
     background-color: var(--bg-color);
     color: var(--text-main);
     margin: 0;
@@ -38,7 +37,7 @@ body {
 }
 
 .container {
-    max-width: 800px; /* Немного расширили контейнер под увеличившийся в 1.5 раза шрифт */
+    max-width: 800px; 
     width: 100%;
     padding: 100px 40px; 
     box-sizing: border-box;
@@ -46,7 +45,7 @@ body {
 
 @media (max-width: 600px) {
     .container {
-        padding: 50px 24px; 
+        padding: 40px 24px 60px 24px; 
     }
 }
 
@@ -55,10 +54,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 24px; /* Пропорционально увеличили зазоры */
-    font-size: 21px; /* Увеличено в 1.5 раза (было 14px) */
+    gap: 24px; 
+    font-size: 21px; 
     color: var(--text-muted);
-    margin-bottom: 90px; /* Увеличили отступ снизу */
+    margin-bottom: 90px; 
 }
 
 .control-divider {
@@ -69,11 +68,11 @@ body {
     background: transparent;
     border: none;
     color: var(--text-muted);
-    font-family: 'Lora', serif;
-    font-size: 21px; /* Увеличено в 1.5 раза (было 14px) */
+    font-family: 'Lora', serif !important;
+    font-size: 21px; 
     cursor: pointer;
     padding: 3px 0;
-    border-bottom: 1px solid transparent;
+    border-bottom: 2px solid transparent;
     transition: all 0.2s ease;
 }
 
@@ -84,7 +83,7 @@ body {
 .inline-btn.active {
     color: var(--text-main);
     font-weight: 400;
-    border-bottom: 2px solid var(--text-main); /* Чуть утолщили линию под крупный шрифт */
+    border-bottom: 2px solid var(--text-main); 
 }
 
 /* ИЕРАРХИЯ ЗАГОЛОВКОВ И ЕДИНАЯ ПОДАЧА ТЕКСТА */
@@ -93,9 +92,8 @@ body {
     text-align: left; 
 }
 
-/* Иерархия 1: Главный заголовок сайта (Самый большой) */
 .main-title {
-    font-size: 54px; /* Увеличено в 1.5 раза (было 36px) */
+    font-size: 54px; 
     font-weight: 400;
     letter-spacing: -0.02em;
     margin: 0;
@@ -103,9 +101,8 @@ body {
     color: var(--text-main);
 }
 
-/* Подзаголовок (Меньше главного, цельная фраза) */
 .subtitle {
-    font-size: 30px; /* Увеличено в 1.5 раза (было 20px) */
+    font-size: 30px; 
     color: var(--text-main);
     margin: 12px 0 0 0; 
     font-weight: 400;
@@ -121,9 +118,8 @@ body {
     margin-bottom: 90px;
 }
 
-/* Иерархия 2: Заголовок смыслового блока (Меньше главного, больше текста) */
 .section-title {
-    font-size: 27px; /* Увеличено в 1.5 раза (было 18px) */
+    font-size: 27px; 
     font-weight: 400;
     color: var(--text-main);
     margin: 0 0 30px 0;
@@ -133,8 +129,8 @@ body {
 /* Иерархия 3: Унифицированный текст для всех уровней подачи */
 .level-content {
     display: none; 
-    font-size: 22.5px; /* Увеличено в 1.5 раза (было 15px) */
-    text-align: justify;
+    font-size: 22.5px; 
+    text-align: left !important; /* ЖЕСТКИЙ СБРОС ТЕКСТА ПО ЛЕВОМУ КРАЮ: пробелы выровняются */
 }
 
 .level-content p {
@@ -142,7 +138,6 @@ body {
     margin-bottom: 24px;
 }
 
-/* Полный отказ от специфического оформления списков или цитат */
 .level-content ul {
     list-style: none;
     padding: 0;
@@ -150,7 +145,7 @@ body {
 }
 
 .level-content li {
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 }
 
 /* Логика отображения */
