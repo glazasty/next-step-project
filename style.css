@@ -1,4 +1,4 @@
-/* 1. ПОДКЛЮЧЕНИЕ ШРИФТА LORA С СЕРВЕРА GITHUB С УЧЕТОМ РЕГИСТРА БУКВ */
+/* 1. ПОДКЛЮЧЕНИЕ ШРИФТА LORA С ЖЕСТКИМ РАЗДЕЛЕНИЕМ ВЕСА */
 @font-face {
     font-family: 'Lora';
     src: url('fonts/Lora-Regular.ttf') format('truetype');
@@ -24,7 +24,8 @@
 }
 
 body {
-    font-family: 'Lora', serif !important; /* !important принудительно заставит браузер использовать Lora */
+    font-family: 'Lora', serif !important;
+    font-weight: 400; /* Явно задаем базовый вес для текста всей страницы */
     background-color: var(--bg-color);
     color: var(--text-main);
     margin: 0;
@@ -35,6 +36,7 @@ body {
     align-items: center;
     min-height: 100vh;
 }
+
 
 .container {
     max-width: 800px; 
