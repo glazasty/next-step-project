@@ -15,17 +15,21 @@
     font-display: swap;
 }
 
-/* 2. ГЛОБАЛЬНЫЕ НАСТРОЙКИ СВЕТЛОЙ ТЕМЫ */
+/* 2. ГЛОБАЛЬНЫЕ МАТЕМАТИЧЕСКИЕ ПЕРЕМЕННЫЕ */
 :root {
     --bg-color: #ffffff;       
     --text-main: #111827;      
     --text-muted: #6b7280;     
     --border-color: #e5e7eb;   
+
+    /* ЕДИНАЯ БАЗОВАЯ ПЕРЕМЕННАЯ ТЕКСТА (Плавный рост от 18.5px на мобильных до 22.5px на десктопе) */
+    --font-base: clamp(18.5px, 2.1vw, 22.5px);
 }
 
 body {
     font-family: 'Lora', serif !important;
     font-weight: 400; 
+    font-size: var(--font-base); /* Привязка тела страницы к базе */
     background-color: var(--bg-color);
     color: var(--text-main);
     margin: 0;
@@ -37,31 +41,29 @@ body {
     min-height: 100vh;
 }
 
-/* 3. МАТЕМАТИЧЕСКИЙ КОНТЕЙНЕР (АДАПТИВНЫЕ ПОЛЯ БЕЗ МЕДИА-ЗАПРОСОВ) */
+/* 3. МАТЕМАТИЧЕСКИЙ КОНТЕЙНЕР (ОТСТУПЫ ОТ БАЗОВОГО ШРИФТА) */
 .container {
     max-width: 800px; 
     width: 100%;
-    /* Поля сверху/снизу: от 50px до 100px в зависимости от экрана */
-    /* Поля слева/справа: от 32px на мобильных до 48px на десктопах */
-    padding: clamp(50px, 8vw, 100px) clamp(32px, 5vw, 48px); 
+    /* Отступы жестко завязаны на размер базового шрифта через коэффициенты */
+    padding: calc(var(--font-base) * 4) calc(var(--font-base) * 1.6); 
     box-sizing: border-box;
 }
 
-/* СТРОЧНАЯ ПАНЕЛЬ УПРАВЛЕНИЯ С ЗАПРЕТОМ ПЕРЕНОСА */
+/* 4. СТРОЧНАЯ ПАНЕЛЬ УПРАВЛЕНИЯ С ЗАПРЕТОМ ПЕРЕНОСА */
 .control-panel {
     display: flex;
     align-items: center;
-    gap: clamp(16px, 3vw, 24px); 
-    font-size: clamp(17px, 2.2vw, 21px); 
+    gap: calc(var(--font-base) * 1.1); 
+    font-size: calc(var(--font-base) * 0.93); /* Меню чуть изящнее основного текста */
     color: var(--text-muted);
-    margin-bottom: clamp(50px, 8vw, 90px); 
-    overflow-x: auto; /* Включает аккуратную прокрутку, если экран экстремально узкий */
-    white-space: nowrap; /* Запрещает элементам меню падать на вторую строку */
+    margin-bottom: calc(var(--font-base) * 4); 
+    overflow-x: auto;
+    white-space: nowrap;
     width: 100%;
-    -webkit-overflow-scrolling: touch; /* Плавный скролл на смартфонах */
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Скрываем некрасивую полосу прокрутки в меню, чтобы сохранить книжный стиль */
 .control-panel::-webkit-scrollbar {
     display: none;
 }
@@ -81,10 +83,13 @@ body {
     padding: 3px 0;
     border-bottom: 2px solid transparent;
     transition: all 0.2s ease;
-    flex-shrink: 0; /* Запрещает кнопкам сжиматься и деформировать буквы */
-    white-space: nowrap; /* Гарантирует монолитность каждого слова */
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
+.inline-btn:hover {
+    color: var(--text-main);
+}
 
 .inline-btn.active {
     color: var(--text-main);
@@ -92,15 +97,15 @@ body {
     border-bottom: 2px solid var(--text-main); 
 }
 
-/* 5. ИЕРАРХИЯ ЗАГОЛОВКОВ И ЕДИНАЯ ПОДАЧА ТЕКСТА ПО ФОРМУЛАМ */
+/* 5. ЖЕСТКАЯ НИСХОДЯЩАЯ ИЕРАРХИЯ НА КОЭФФИЦИЕНТАХ */
 .header {
-    margin-bottom: clamp(50px, 8vw, 90px);
+    margin-bottom: calc(var(--font-base) * 4);
     text-align: left; 
 }
 
-/* Иерархия 1: Главный заголовок (Плавно растет от 36px на мобильных до 54px на десктопе) */
+/* Иерархия 1: Главный заголовок сайта (База умноженная на коэффициент 2.4) */
 .main-title {
-    font-size: clamp(36px, 4.5vw, 54px); 
+    font-size: calc(var(--font-base) * 2.4); 
     font-weight: 400;
     letter-spacing: -0.02em;
     margin: 0;
@@ -108,39 +113,39 @@ body {
     color: var(--text-main);
 }
 
-/* Подзаголовок (Плавно растет от 22px до 30px) */
+/* Подзаголовок (База умноженная на коэффициент 1.33) */
 .subtitle {
-    font-size: clamp(22px, 2.8vw, 30px); 
+    font-size: calc(var(--font-base) * 1.33); 
     color: var(--text-main);
-    margin: 12px 0 0 0; 
+    margin: calc(var(--font-base) * 0.5) 0 0 0; 
     font-weight: 400;
     line-height: 1.3;
 }
 
 .manifesto-section {
-    margin-bottom: clamp(50px, 8vw, 90px);
+    margin-bottom: calc(var(--font-base) * 4);
 }
 
-/* Иерархия 2: Заголовок блока (Всегда Жирный, Первая буква заглавная, плавно растет от 24px до 27px) */
+/* Иерархия 2: Заголовок смыслового блока (База умноженная на коэффициент 1.2) */
 .section-title {
-    font-size: clamp(24px, 2.5vw, 27px); 
+    font-size: calc(var(--font-base) * 1.2); 
     font-weight: bold !important; 
     text-transform: capitalize; 
     color: var(--text-main);
-    margin: 0 0 30px 0;
+    margin: 0 0 calc(var(--font-base) * 1.33) 0;
     letter-spacing: 0.02em;
 }
 
-/* Иерархия 3: Унифицированный массив текста (Меньше любого заголовка, плавно растет от 18.5px до 22.5px) */
+/* Иерархия 3: Текст (Прямое наследование базового размера шрифта страницы) */
 .level-content {
     display: none; 
-    font-size: clamp(18.5px, 2.1vw, 22.5px); 
+    font-size: var(--font-base); 
     text-align: left !important; 
 }
 
 .level-content p {
     margin-top: 0;
-    margin-bottom: 24px;
+    margin-bottom: calc(var(--font-base) * 1.06);
 }
 
 .level-content ul {
@@ -150,7 +155,7 @@ body {
 }
 
 .level-content li {
-    margin-bottom: 24px;
+    margin-bottom: calc(var(--font-base) * 1.06);
 }
 
 /* Логика отображения */
