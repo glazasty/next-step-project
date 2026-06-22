@@ -40,19 +40,17 @@ body {
     }
 }
 
-/* ОБНОВЛЕННАЯ СТРОЧНАЯ ПАНЕЛЬ УПРАВЛЕНИЯ */
+/* ОБНОВЛЕННАЯ СТРОЧНАЯ ПАНЕЛЬ УПРАВЛЕНИЯ БЕЗ ЛИНИЙ */
 .control-panel {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 16px; /* Увеличили отступ между пунктами меню, так как разделители ушли */
+    gap: 16px; 
     font-size: 14px;
     color: var(--text-muted);
     margin-bottom: 60px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 16px;
+    padding-bottom: 0; /* Убрали внутренний отступ снизу */
 }
-
 .control-divider {
     color: var(--border-color);
     margin: 0 4px;
