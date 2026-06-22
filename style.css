@@ -50,27 +50,20 @@ body {
     box-sizing: border-box;
 }
 
-/* 4. СТРОЧНАЯ ПАНЕЛЬ УПРАВЛЕНИЯ С ЗАПРЕТОМ ПЕРЕНОСА */
+/* ЧИСТАЯ ПАНЕЛЬ УПРАВЛЕНИЯ С ЕСТЕСТВЕННЫМ ПЕРЕНОСОМ */
 .control-panel {
     display: flex;
+    flex-wrap: wrap; /* Разрешает элементам мягко падать на вторую строчку, если экран узкий */
     align-items: center;
     gap: calc(var(--font-base) * 1.1); 
-    font-size: calc(var(--font-base) * 0.93); /* Меню чуть изящнее основного текста */
+    font-size: calc(var(--font-base) * 0.93); 
     color: var(--text-muted);
     margin-bottom: calc(var(--font-base) * 4); 
-    overflow-x: auto;
-    white-space: nowrap;
     width: 100%;
-    -webkit-overflow-scrolling: touch;
-}
-
-.control-panel::-webkit-scrollbar {
-    display: none;
 }
 
 .control-divider {
     color: var(--border-color);
-    flex-shrink: 0;
 }
 
 .inline-btn {
@@ -83,8 +76,7 @@ body {
     padding: 3px 0;
     border-bottom: 2px solid transparent;
     transition: all 0.2s ease;
-    flex-shrink: 0;
-    white-space: nowrap;
+    white-space: nowrap; /* Каждое отдельное слово («маршрут», «путь») остается цельным и не бьется по буквам */
 }
 
 .inline-btn:hover {
