@@ -40,20 +40,17 @@ body {
     }
 }
 
-/* ЕДИНАЯ ТЕКСТОВАЯ ПАНЕЛЬ УПРАВЛЕНИЯ (ЯЗЫК И ПОДАЧА) */
+/* ОБНОВЛЕННАЯ СТРОЧНАЯ ПАНЕЛЬ УПРАВЛЕНИЯ */
 .control-panel {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    align-items: center;
+    gap: 16px; /* Увеличили отступ между пунктами меню, так как разделители ушли */
     font-size: 14px;
     color: var(--text-muted);
     margin-bottom: 60px;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 16px;
-}
-
-.control-label {
-    color: var(--text-muted);
 }
 
 .control-divider {
@@ -68,26 +65,28 @@ body {
     font-family: 'Lora', serif;
     font-size: 14px;
     cursor: pointer;
-    padding: 0 2px;
-    transition: color 0.2s ease;
+    padding: 2px 0; /* Небольшой вертикальный отступ для аккуратного подчеркивания */
+    border-bottom: 1px solid transparent; /* Защита от прыжков текста при активации */
+    transition: all 0.2s ease;
 }
 
 .inline-btn:hover {
     color: var(--text-main);
 }
 
+/* Текстовое подчеркивание для активного пункта */
 .inline-btn.active {
     color: var(--text-main);
-    font-weight: 700;
+    font-weight: 400; /* Оставляем начертание одним для сохранения иерархии */
+    border-bottom: 1px solid var(--text-main);
 }
 
 /* СТРОГАЯ НИСХОДЯЩАЯ ИЕРАРХИЯ ШРИФТОВ */
 .header {
     margin-bottom: 60px;
-    text-align: left; /* Уходим от центрирования к естественному книжному выравниванию */
+    text-align: left; 
 }
 
-/* Иерархия 1: Главный заголовок (Самый большой, без капса, без жирности) */
 .main-title {
     font-size: 36px;
     font-weight: 400;
@@ -97,7 +96,6 @@ body {
     color: var(--text-main);
 }
 
-/* Часть единой фразы, пропорционально меньше основного заголовка */
 .subtitle {
     font-size: 20px;
     color: var(--text-main);
@@ -115,7 +113,6 @@ body {
     margin-bottom: 60px;
 }
 
-/* Иерархия 2: Заголовок смыслового блока (Меньше главного, больше текста) */
 .section-title {
     font-size: 18px;
     font-weight: 400;
@@ -124,16 +121,19 @@ body {
     letter-spacing: 0.02em;
 }
 
-/* Иерархия 3: Текст (Меньше любого из заголовков) */
 .level-content {
     display: none; 
-    font-size: 15px; /* Идеальный размер для глубокого чтения Lora */
+    font-size: 15px; 
 }
 
 .level-H {
     color: var(--text-main);
     border-left: 2px solid var(--text-main);
     padding-left: 20px;
+}
+
+.level-M {
+    font-size: 16px;
 }
 
 .level-M ul {
@@ -155,14 +155,16 @@ body {
     color: var(--text-muted);
 }
 
-.level-P text-align: justify;
+.level-P {
+    font-size: 16px;
+    text-align: justify;
+}
 
 .level-P p {
     margin-top: 0;
     margin-bottom: 16px;
 }
 
-/* Логика отображения */
 body.show-H .level-H,
 body.show-M .level-M,
 body.show-P .level-P {
